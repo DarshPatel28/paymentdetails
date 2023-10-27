@@ -1,129 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>P&P Restaurant</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Address Details</title>
 	<style>
-        * {
+		* {
 	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
 }
 
 body {
 	font-family: Arial, sans-serif;
+	margin: 0;
+	background-image: url(https://i.ibb.co/XjSBZgn/desktop-wallpaper-indian-restaurant-background-2-background-check-all-indian-style.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-header {
-	background: linear-gradient(
-      rgba(240, 240, 240, 0.144),
-      rgba(255, 255, 255, 0.336)
-    ),
-    url("https://i.ibb.co/XjSBZgn/desktop-wallpaper-indian-restaurant-background-2-background-check-all-indian-style.jpg");
-	color: #fff;
-	padding: 20px;
+h1 {
 	text-align: center;
-}
-
-main {
-	padding: 20px;
+	margin-top: 2rem;
 }
 
 form {
-	display: flex;
-	flex-direction: column;
-	max-width: 500px;
+	max-width: 600px;
 	margin: 0 auto;
+	padding: 1rem;
 }
 
 label {
-	margin-top: 10px;
+	display: block;
+	margin-top: 1rem;
 }
 
-input[type="text"],
-input[type="email"] {
-	padding: 10px;
-	margin-bottom: 20px;
+input[type="text"], input[type="submit"] {
+	display: block;
+	width: 100%;
+	padding: 0.5rem;
+	margin-top: 0.5rem;
 	border: none;
-	border-radius: 5px;
-}
-
-.payment-options {
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-}
-
-.payment-options label {
-	margin-right: 10px;
-	cursor: pointer;
-}
-
-.payment-options img {
-	height: 30px;
-}
-
-input[type="radio"] {
-	display: none;
-}
-
-input[type="radio"]:checked + label {
-	border: 2px solid #333;
+	border-radius: 0.25rem;
 }
 
 input[type="submit"] {
-	background-color: #333;
-	color: #fff;
-	padding: 10px;
-	border: none;
-	border-radius: 5px;
+	background-image: linear-gradient(to right, rgba(255, 38, 0, 0.89) , rgb(255, 94, 0));
+	color: white;
 	cursor: pointer;
 }
 
-input[type="submit"]:hover {
-	background-color: #555;
+@media screen and (max-width: 600px) {
+	form {
+		padding: 0.5rem;
+	}
 }
-
-footer {
-	background: linear-gradient(
-      rgba(240, 240, 240, 0.144),
-      rgba(255, 255, 255, 0.336)
-    ),
-    url("https://i.ibb.co/XjSBZgn/desktop-wallpaper-indian-restaurant-background-2-background-check-all-indian-style.jpg");
-	color: #fff;
-	padding: 20px;
-	text-align: center;
-}
-    </style>
+	</style>
 </head>
 <body>
-	<header>
-		<h1>Restaurant Payment Page</h1>
-	</header>
-	<main>
-		<form>
-			<label for="name">Name:</label>
-			<input type="text" id="name" name="name" required>
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required>
-			<label for="card">Card Number:</label>
-			<input type="text" id="card" name="card" required>
-			<label for="exp">Expiration Date:</label>
-			<input type="text" id="exp" name="exp" required>
-			<label for="cvv">CVV:</label>
-			<input type="text" id="cvv" name="cvv" required>
-			<div class="payment-options">
-				<label for="google-pay"><img src="https://imgs.search.brave.com/WCGBfjIi0uSL45qW2VpHBm25d0LwQGWbGndGnwqpuG4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/cGluY2xpcGFydC5j/b20vcGljZGlyL21p/ZGRsZS81NzAtNTcw/NDI1M19nb29nbGUt/cGF5LWxvZ28taWNv/bi1wbmctaW1hZ2Ut/ZnJlZS1kb3dubG9h/ZC5wbmc" alt="Google Pay"></label>
-				<input type="radio" id="google-pay" name="payment" value="google-pay">
-				<label for="phone-pay"><img src="https://imgs.search.brave.com/umbyJkcCuEXWKqBZQLcFUGKjRB1iuaQewGfxSrb8u3o/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5wbmdhYWEuY29t/LzU5MC85NTU5MC1t/aWRkbGUucG5n" alt="Phone Pay"></label>
-				<input type="radio" id="phone-pay" name="payment" value="phone-pay">
-			</div>
-			<input type="submit" value="Pay Now">
-		</form>
-	</main>
-	<footer>
-		<p>&copy; 2023 P&P Restaurant Payment Page</p>
-	</footer>
-	<script src="script.js"></script>
+	<h1>Address Details</h1>
+	<form id="address-form">
+		<label for="street">Street Address:</label>
+		<input type="text" id="street" name="street" required>
+
+		<label for="city">City:</label>
+		<input type="text" id="city" name="city" required>
+
+		<label for="state">State:</label>
+		<input type="text" id="state" name="state" required>
+
+		<label for="zip">Zip Code:</label>
+		<input type="text" id="zip" name="zip" required>
+
+		<input type="submit" value="Submit">
+	</form>
+	<script>
+        const form = document.getElementById('address-form');
+
+form.addEventListener('submit', (event) => {
+	event.preventDefault(); // prevent the form from submitting normally
+
+	// get the form data
+	const formData = new FormData(form);
+
+	// redirect to the other website page with the form data as query parameters
+	const queryString = new URLSearchParams(formData).toString();
+	window.location.href = 'https://darshpatel28.github.io/paymentdetails2';
+});
+
+    </script>
 </body>
 </html>
